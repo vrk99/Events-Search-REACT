@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class SearchForm extends Component {
   constructor(props){
@@ -27,6 +27,11 @@ class SearchForm extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     
+    this.props.enableLoading();
+    fetch("https://www.eventbriteapi.com/v3/events/search?token=YOUR_EVERBRITE_OAUTH_TOKEN_HERE")
+      .then(res => res.json())
+      .then(parsedRes => this.props.updateEvents(parsedRes.events))
+      .catch(err => console.log(err))
   }
 
   componentDidMount(){

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SearchForm from './components/SearchForm';
+import Loading from './components/Loading';
 
 class App extends Component {
   constructor(props){
@@ -14,14 +15,22 @@ class App extends Component {
 
   updateEvents = (events) => {
     this.setState(() => ({
-      events: events
+      loading: false,
+      events: events,
+    }))
+  }
+
+  enableLoading = () => {
+    this.setState(() => ({
+      loading: true,
     }))
   }
 
   render() {
     return (
       <div className="App">
-        <SearchForm updateEvents={this.updateEvents} />
+        <SearchForm updateEvents={this.updateEvents} enableLoading={this.enableLoading} />
+        {this.state.loading && <Loading />}
       </div>
     );
   }
