@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import SearchForm from './components/SearchForm';
 import Loading from './components/Loading';
+import SearchForm from './components/SearchForm';
+import EventsGrid from './components/EventsGrid';
 
 class App extends Component {
   constructor(props){
@@ -30,7 +31,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchForm updateEvents={this.updateEvents} enableLoading={this.enableLoading} />
-        {this.state.loading && <Loading />}
+        {this.state.loading ? <Loading /> : <EventsGrid events={this.state.events} />}
       </div>
     );
   }
