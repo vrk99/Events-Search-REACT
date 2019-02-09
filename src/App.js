@@ -3,6 +3,8 @@ import './App.css';
 import Loading from './components/Loading';
 import SearchForm from './components/SearchForm';
 import EventsGrid from './components/EventsGrid';
+import Footer from './components/Footer';
+import ReactLogo from './logo.svg';
 
 class App extends Component {
   constructor(props){
@@ -39,6 +41,7 @@ class App extends Component {
       <div className="App">
         <SearchForm updateEvents={this.updateEvents} enableLoading={this.enableLoading} />
         {this.state.loading ? <Loading /> : <EventsGrid events={this.state.events} />}
+        <Footer reactLogo={ReactLogo} />
       </div>
     );
   }

@@ -2,3 +2,24 @@
     transform: scale(1.1);
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.Footer {
+    height: 75px;
+    line-height: 75px;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding-left: 25px;
+}
+
+.react-logo {
+    animation: react-logo-spin infinite 20s linear;
+    height: 50px;
+}
+
+@keyframes react-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }  
