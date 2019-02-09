@@ -14,6 +14,13 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    fetch("https://www.eventbriteapi.com/v3/events/search?token=YOUR_EVERBRITE_OAUTH_TOKEN_HERE")
+      .then(res => res.json())
+      .then(parsedRes => this.updateEvents(parsedRes.events))
+      .catch(err => console.log(err))
+  }
+
   updateEvents = (events) => {
     this.setState(() => ({
       loading: false,
