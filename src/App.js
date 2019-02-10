@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 import Loading from './components/Loading';
 import SearchForm from './components/SearchForm';
@@ -38,11 +39,26 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <SearchForm updateEvents={this.updateEvents} enableLoading={this.enableLoading} />
-        {this.state.loading ? <Loading /> : <EventsGrid events={this.state.events} />}
-        <Footer reactLogo={ReactLogo} />
-      </div>
+      <BrowserRouter>
+        <div className='App'>
+          <Route exact path='/' render={props => {
+            return (
+              <React.Fragment>
+                <SearchForm updateEvents={this.updateEvents} enableLoading={this.enableLoading} />
+                {this.state.loading ? <Loading /> : <EventsGrid events={this.state.events} />}
+                <Footer reactLogo={ReactLogo} />
+              </React.Fragment>
+            )
+          }}>
+          </Route>
+          <Route path='/event/:id' render={props => {
+            return (
+              <div>{props.match.url}</div>
+            )
+          }}>
+          </Route>
+        </div>
+      </BrowserRouter>
     );
   }
 }
