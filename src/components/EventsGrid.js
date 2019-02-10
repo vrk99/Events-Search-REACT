@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 function EventsGrid(props) {
   return (
@@ -12,7 +13,8 @@ function EventsGrid(props) {
               <p>Timezone: {event.start.timezone}</p>
               <p>Start: {event.start.utc}</p>
               <p>End: {event.end.utc}</p>
-              <a href={event.url} className="btn btn-primary">Read More</a>
+              {/* <a href={event.url} className="btn btn-primary">Read More</a> */}
+              <Link to={`/event/${event.id}`} className="btn btn-outline-info">Read More</Link>
             </div>
           </div>
         </div>

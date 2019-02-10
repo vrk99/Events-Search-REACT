@@ -4,6 +4,7 @@ import './App.css';
 import Loading from './components/Loading';
 import SearchForm from './components/SearchForm';
 import EventsGrid from './components/EventsGrid';
+import Event from './components/Event';
 import Footer from './components/Footer';
 import ReactLogo from './logo.svg';
 
@@ -51,9 +52,9 @@ class App extends Component {
             )
           }}>
           </Route>
-          <Route path='/event/:id' render={props => {
+          <Route path='/event/:event_id' render={props => {
             return (
-              <div>{props.match.url}</div>
+              <Event event_id={props.match.params.event_id} />
             )
           }}>
           </Route>
