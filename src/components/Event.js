@@ -11,12 +11,12 @@ class Event extends Component {
   }
 
   componentDidMount() {
-    fetch("https://www.eventbriteapi.com/v3/events/" + this.props.event_id + "?token=YOUR_EVERBRITE_OAUTH_TOKEN_HERE")
+    fetch("https://www.eventbriteapi.com/v3/events/" + this.props.event_id + "?token=YOUR_EVENTBRITE_OAUTH_TOKEN_HERE")
       .then(res => res.json())
       .then(event => {
         this.setState(() => ({ event }));
         console.log(this.state.event.venue_id)
-        fetch("https://www.eventbriteapi.com/v3/venues/" + this.state.event.venue_id + "?token=YOUR_EVERBRITE_OAUTH_TOKEN_HERE")
+        fetch("https://www.eventbriteapi.com/v3/venues/" + this.state.event.venue_id + "?token=YOUR_EVENTBRITE_OAUTH_TOKEN_HERE")
           .then(res => res.json())
           .then(eventLocation => this.setState(() => ({ eventLocation })))
           .catch(err => console.log(err))

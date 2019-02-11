@@ -28,7 +28,7 @@ class SearchForm extends Component {
     event.preventDefault();
 
     this.props.enableLoading();
-    fetch(`https://www.eventbriteapi.com/v3/events/search?token=YOUR_EVERBRITE_OAUTH_TOKEN_HERE&q=${this.state.query}&location.address=${this.state.location}`)
+    fetch(`https://www.eventbriteapi.com/v3/events/search?token=YOUR_EVENTBRITE_OAUTH_TOKEN_HERE&q=${this.state.query}&location.address=${this.state.location}`)
       .then(res => res.json())
       .then(parsedRes => this.props.updateEvents(parsedRes.events))
       .catch(err => console.log(err))
